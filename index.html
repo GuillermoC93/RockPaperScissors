@@ -18,9 +18,39 @@
             } else {
                 computerSelection = "scissors";
             }
-            
+
             return computerSelection;
         }
+
+        function playRound(computerSelection, playerSelection) {
+            if ((computerSelection == "rock") && (playerSelection == "rock")) {
+                console.log("Game is a draw!");
+            } else if ((computerSelection == "rock") && (playerSelection == "paper")) {
+                console.log("You lose! Paper beats rock.");
+            } else if ((computerSelection == "rock") && (playerSelection == "scissors")) {
+                console.log("You win! Scissors beat rock!");
+            }
+
+            if ((computerSelection == "paper" && playerSelection == "rock")) {
+                console.log("You win! Paper beats rock."); 
+            } else if ((computerSelection == "paper" && playerSelection == "paper")) {
+                console.log("Game is a draw!");
+            } else if ((computerSelection == "paper" && playerSelection == "scissors")) {
+                console.log("You lose! Scissors beat paper.")
+            }
+
+            if ((computerSelection == "scissors" && playerSelection == "rock")) {
+                console.log("You lose! Rock beats scissors");
+            } else if ((computerSelection == "scissors" && playerSelection == "paper")) {
+                console.log("You win! Scissors beat paper");
+            } else if ((computerSelection == "scissors" && playerSelection == "scissors")) {
+                console.log("Game is a draw!")
+            }
+        }
+
+        const playerSelection = "scissors";
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
