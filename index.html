@@ -23,34 +23,98 @@
         }
 
         function playRound(computerSelection, playerSelection) {
+
+            playerSelection = playerSelection.toLowerCase();
+
             if ((computerSelection == "rock") && (playerSelection == "rock")) {
-                console.log("Game is a draw!");
+                return roundDraw;
             } else if ((computerSelection == "rock") && (playerSelection == "paper")) {
-                console.log("You lose! Paper beats rock.");
+                return playerWinRound;
             } else if ((computerSelection == "rock") && (playerSelection == "scissors")) {
-                console.log("You win! Scissors beat rock!");
+                return computerWinRound;
             }
 
             if ((computerSelection == "paper" && playerSelection == "rock")) {
-                console.log("You win! Paper beats rock."); 
+                return computerWinRound; 
             } else if ((computerSelection == "paper" && playerSelection == "paper")) {
-                console.log("Game is a draw!");
+                return roundDraw;
             } else if ((computerSelection == "paper" && playerSelection == "scissors")) {
-                console.log("You lose! Scissors beat paper.")
+                return playerWinRound;
             }
 
             if ((computerSelection == "scissors" && playerSelection == "rock")) {
-                console.log("You lose! Rock beats scissors");
+                return playerWinRound;
             } else if ((computerSelection == "scissors" && playerSelection == "paper")) {
-                console.log("You win! Scissors beat paper");
+                return computerWinRound;
             } else if ((computerSelection == "scissors" && playerSelection == "scissors")) {
-                console.log("Game is a draw!")
+                return roundDraw;
             }
         }
 
-        const playerSelection = "scissors";
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        let playerWinRound = "You win!"
+        let computerWinRound = "You lose!"
+        let roundDraw = "Draw!"
+
+        function playerInput() {
+            let playerSelection = prompt("Paper, rock, or scissors?").toLowerCase();
+            return playerSelection;
+        }
+
+        function game() {
+            playerSelection = playerInput();
+            computerSelection = computerPlay();
+            let roundOneResult = playRound(computerSelection, playerSelection);
+            console.log(roundOneResult);
+            gameScore(roundOneResult);
+            playerSelection = playerInput();
+            computerSelection = computerPlay();
+            let roundTwoResult = playRound(computerSelection, playerSelection);
+            console.log(roundTwoResult);
+            gameScore(roundTwoResult);
+            playerSelection = playerInput();
+            computerSelection = computerPlay();
+            let roundThreeResult = playRound(computerSelection, playerSelection);
+            console.log(roundThreeResult);
+            gameScore(roundThreeResult);
+            playerSelection = playerInput();
+            computerSelection = computerPlay();
+            let roundFourResult = playRound(computerSelection, playerSelection);
+            console.log(roundFourResult);
+            gameScore(roundFourResult);
+            playerSelection = playerInput();
+            computerSelection = computerPlay();
+            let roundFiveResult = playRound(computerSelection, playerSelection);
+            console.log(roundFiveResult);
+            gameScore(roundFiveResult);
+            console.log(overallGameScore())
+        }
+
+
+        let playerScore = 0
+        let computerScore = 0
+        let draws = 0
+        
+        function gameScore(result) {
+
+            if (result === playerWinRound) {
+                playerScore ++;
+            } else if (result === computerWinRound) {
+                computerScore ++;
+            } else if (result === roundDraw) {
+                draws ++;
+            }
+        }
+
+        function overallGameScore() {
+            if ((playerScore > computerScore) && (playerScore > draws)) {
+                return "Congratulations, you won!"
+            } else if ((computerScore > playerScore) && (computerScore > draws)) {
+                return "Aww, you lost!"
+            } else {
+                return "No winners, try again!"
+            }
+        }
+
     </script>
 </body>
 </html>
