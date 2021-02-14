@@ -12,8 +12,9 @@
     text-align: center;
 }
 
-.results {
+.container {
     margin: auto;
+    margin-top: 15px;
     width: 50%;
     text-align: center;
 }
